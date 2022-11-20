@@ -8,6 +8,7 @@ import router from './router'
 import { usePermissStore } from './store/permiss'
 import 'element-plus/dist/index.css'
 import './assets/css/icon.css'
+import './index.css'
 
 
 const app = createApp(App)
