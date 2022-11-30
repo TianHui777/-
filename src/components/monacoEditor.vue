@@ -1,5 +1,5 @@
 <template>
-    <div ref="codeEditBox" class="codeEditBox"></div>
+  <div ref="codeEditBox" class="codeEditBox"></div>
 
 </template>
 

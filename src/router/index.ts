@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory, RouteRecordRaw} from "vue-router";
+import {createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw} from "vue-router";
 import {usePermissStore} from '../store/permiss'
 import Home from "../views/home.vue";
 
@@ -6,7 +6,8 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/',
         redirect: '/dashboard'
-    }, {
+    },
+    {
         path: "/",
         name: "Home",
         component: Home,
@@ -108,40 +109,84 @@ const routes: RouteRecordRaw[] = [
                 component: () => import (/* webpackChunkName: "markdown" */ '../views/markdown.vue')
             }
         ]
-    }, {
+    },
+    {
         path: "/login",
         name: "Login",
         meta: {
             title: '登录'
         },
         component: () => import ( /* webpackChunkName: "login" */ "../views/login.vue")
-    }, {
+    },
+    {
         path: '/403',
         name: '403',
         meta: {
             title: '没有权限'
         },
-        component: () => import (/* webpackChunkName: "403" */ '../views/403.vue')
+        component: () => import (/* webpackChunkName: "403" */ '../views/403.vue'),
+
     },
+
+
+    /*
+        学生页面
+     */
+    {
+        path: '/student',
+        name: 'student',
+        component: () => import (/* webpackChunkName: "403" */ '../views/StudentHomeView.vue'),
+
+        /*
+            子页面
+         */
+        children: [
+            {
+                path: '/student/code',
+                name: 'code',
+                component: () => import (/* 编码界面 */ '../components/student/CodeComponent.vue'),
+            },
+            {
+                path: '/student/course',
+                name: 'course',
+                component: () => import (/* 选课界面 */ '../components/student/CourseComponent.vue'),
+            },
+            {
+                path: '/student/home',
+                name: 'home',
+                component: () => import (/* 学生主页 */ '../components/student/HomeComponent.vue'),
+            },
+            {
+                path: '/student/info',
+                name: 'info',
+                component: () => import (/* 学生信息页面 */ '../components/student/StudentInfoComponent.vue'),
+            },
+
+
+        ]
+
+    },
+
+
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes
 });
 
-router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title} | vue-manage-system`;
-    const role = localStorage.getItem('ms_username');
-    const permiss = usePermissStore();
-    if (!role && to.path !== '/login') {
-        next('/login');
-    } else if (to.meta.permiss && !permiss.key.includes(to.meta.permiss)) {
-        // 如果没有权限，则进入403
-        next('/403');
-    } else {
-        next();
-    }
-});
+// router.beforeEach((to, from, next) => {
+//     document.title = `${to.meta.title} | vue-manage-system`;
+//     const role = localStorage.getItem('ms_username');
+//     const permiss = usePermissStore();
+//     if (!role && to.path !== '/login') {
+//         next('/login');
+//     } else if (to.meta.permiss && !permiss.key.includes(to.meta.permiss)) {
+//         // 如果没有权限，则进入403
+//         next('/403');
+//     } else {
+//         next();
+//     }
+// });
 
 export default router;
