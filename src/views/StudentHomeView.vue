@@ -17,21 +17,21 @@
 import Header from "../components/common/Header.vue";
 </script>
 
-<style scoped>
-/*.slide-fade-enter-active {*/
-/*  transition: all 0.3s ease-out;*/
-/*}*/
+<style lang="less" scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
 
-/*.slide-fade-leave-active {*/
-/*  transition: all 0.5s;*/
-/*}*/
+.slide-fade-leave-active {
+  transition: all 0.5s;
+}
 
-/*.slide-fade-enter-from,*/
-/*.slide-fade-leave-to {*/
-/*  opacity: 0.3;*/
-/*}*/
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  opacity: 0.3;
+}
 
-/*.slide-fade-enter-to, .slide-fade-leave-from {*/
-/*  opacity: 1;*/
-/*}*/
+.slide-fade-enter-to, .slide-fade-leave-from {
+  opacity: 1;
+}
 </style>
