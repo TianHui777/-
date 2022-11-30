@@ -357,7 +357,10 @@ import * as monaco from 'monaco-editor'
 import {reactive, ref} from "vue";
 
 const value = ref('')
-let language = reactive({type:'python'})
+setInterval((value)=>{
+  console.log(value)
+},5000)
+let language = reactive({type: 'python'})
 const editorMounted = (editor: monaco.editor.IStandaloneCodeEditor) => {
   console.log('editor实例加载完成', editor)
 }
