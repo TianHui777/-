@@ -116,7 +116,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
             title: '登录'
         },
-        component: () => import ( /* webpackChunkName: "login" */ "../views/login.vue")
+        component: () => import ( /* webpackChunkName: "login" */ "../views/LoginView.vue")
     },
     {
         path: '/403',
