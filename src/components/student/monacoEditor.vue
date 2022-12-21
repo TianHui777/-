@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { editorProps } from '../type/monacoEditorType'
+import { editorProps } from '../../type/monacoEditorType'
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'

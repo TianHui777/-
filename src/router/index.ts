@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
-import { usePermissStore } from '../store/permiss'
+import {createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw} from "vue-router";
+import {usePermissStore} from '../store/permiss'
 import Home from "../views/home.vue";
 
 const routes: RouteRecordRaw[] = [
@@ -167,6 +167,38 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* 学生信息页面 */ '../components/student/StudentInfoComponent.vue'),
             },
 
+
+        ]
+
+    },
+
+    /*
+        教师页面
+     */
+    {
+        path: '/teacher',
+        name: 'teacher',
+        component: () => import(/* TeacherHomeView */ '../views/TeacherHomeView.vue'),
+
+        /*
+            子页面
+         */
+        children: [
+            {
+                path: '/teacher/release',
+                name: 'release',
+                component: () => import(/* 发布实验 */ '../components/teacher/ReleaseComponent.vue'),
+            },
+            {
+                path: '/teacher/addStudent',
+                name: 'addStudent',
+                component: () => import(/* 发布实验 */ '../components/teacher/AddStudentComponent.vue'),
+            },
+            {
+                path: '/teacher/consult',
+                name: 'consult',
+                component: () => import(/* 发布实验 */ '../components/teacher/ConsultComponent.vue'),
+            },
 
         ]
 

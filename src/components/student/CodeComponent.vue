@@ -23,7 +23,7 @@
         >
       </div>
       <monacoEditor
-          v-model="value"
+          v-model="code"
           :language="language.type"
           width="900px"
           height="600px"
@@ -40,13 +40,13 @@
 
 <script setup lang="ts">
 
-import MonacoEditor from "../monacoEditor.vue";
+import MonacoEditor from "./monacoEditor.vue";
 import * as monaco from 'monaco-editor'
 import {reactive, ref, computed} from "vue";
 
-const value = ref('')
-setInterval((value) => {
-  console.log(value)
+let code = ref('123')
+setInterval((code) => {
+  console.log(code)
 }, 5000)
 let language = reactive({type: 'python'})
 const editorMounted = (editor: monaco.editor.IStandaloneCodeEditor) => {

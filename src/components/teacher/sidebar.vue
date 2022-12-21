@@ -52,87 +52,28 @@
 
 <script setup lang="ts">
 import {computed} from 'vue';
-import {useSidebarStore} from '../store/sidebar';
+import {useSidebarStore} from '../../store/sidebar';
 import {useRoute} from 'vue-router';
 
 const items = [
   {
     icon: 'Odometer',
-    index: '/dashboard',
-    title: '答题界面',
+    index: '/teacher/release',
+    title: '发布实验',
     permiss: '1'
   },
   {
     icon: 'Calendar',
-    index: '/table',
-    title: '基础表格',
+    index: '/teacher/addStudent',
+    title: '添加学生',
     permiss: '2'
   },
   {
     icon: 'DocumentCopy',
-    index: '/tabs',
-    title: 'tab选项卡',
+    index: '/teacher/consult',
+    title: '实验完成情况',
     permiss: '3'
   },
-  {
-    icon: 'Edit',
-    index: '3',
-    title: '表单相关',
-    permiss: '4',
-    subs: [
-      {
-        index: '/form',
-        title: '基本表单',
-        permiss: '5'
-      },
-      {
-        index: '/upload',
-        title: '文件上传',
-        permiss: '6'
-      },
-      {
-        index: '4',
-        title: '三级菜单',
-        permiss: '7',
-        subs: [
-          {
-            index: '/editor',
-            title: '富文本编辑器',
-            permiss: '8'
-          },
-          {
-            index: '/markdown',
-            title: 'markdown编辑器',
-            permiss: '9'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    icon: 'Setting',
-    index: '/icon',
-    title: '自定义图标',
-    permiss: '10'
-  },
-  {
-    icon: 'PieChart',
-    index: '/charts',
-    title: 'schart图表',
-    permiss: '11'
-  },
-  {
-    icon: 'Warning',
-    index: '/permission',
-    title: '权限管理',
-    permiss: '13'
-  },
-  {
-    icon: 'CoffeeCup',
-    index: '/donate',
-    title: '支持作者',
-    permiss: '14'
-  }
 ];
 
 const route = useRoute();
