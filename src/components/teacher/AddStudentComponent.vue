@@ -1,307 +1,220 @@
 <template>
   <div>
-    <el-row :gutter="20">
-      <el-col :span="8">
-        <el-card shadow="hover" class="mgb20" style="height: 252px">
-          <div class="user-info">
-            <el-avatar :size="120" :src="imgurl"/>
-            <div class="user-info-cont">
-              <div class="user-info-name">{{ name }}</div>
-              <div>{{ role }}</div>
-            </div>
-          </div>
-          <div class="user-info-list">
-            上次登录时间：
-            <span>2022-10-01</span>
-          </div>
-          <div class="user-info-list">
-            上次登录地点：
-            <span>东莞</span>
-          </div>
-        </el-card>
-        <el-card shadow="hover" style="height: 252px">
-          <template #header>
-            <div class="clearfix">
-              <span>语言详情</span>
-            </div>
+    <!-- 面包屑导航区域 -->
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item>首页</el-breadcrumb-item>
+      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
+    </el-breadcrumb>
+    <!-- 卡片视图区域 -->
+    <el-card>
+      <el-row :gutter="20">
+        <el-col :span="8">
+          <!-- 搜索与添加区域 -->
+          <el-input placeholder="请输入内容"
+                    v-model="queryInfo.query" clearable @clear="getUserList">
+            <template #append>
+              <el-button @click="getUserList">
+                <el-icon>
+                  <search/>
+                </el-icon>
+              </el-button>
+            </template>
+          </el-input>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="primary" @click="addDialogVisible = true">添加用户</el-button>
+        </el-col>
+      </el-row>
+      <!-- 用户列表区域  -->
+      <el-table :data="userlist" border stripe>
+        <el-table-column type="index"></el-table-column>
+        <el-table-column label="姓名" prop="username"></el-table-column>
+        <el-table-column label="邮箱" prop="email"></el-table-column>
+        <el-table-column label="电话" prop="mobile"></el-table-column>
+        <el-table-column label="角色" prop="role_name"></el-table-column>
+        <el-table-column label="状态" prop="mg_state">
+          <template v-slot="scope">
+            <el-switch v-model="scope.row.mg_state" @change="userStateChanged(scope.row)"/>
           </template>
-          Vue
-          <el-progress :percentage="71.3" color="#42b983"></el-progress>
-          JavaScript
-          <el-progress :percentage="24.1" color="#f1e05a"></el-progress>
-          CSS
-          <el-progress :percentage="13.7"></el-progress>
-          HTML
-          <el-progress :percentage="5.9" color="#f56c6c"></el-progress>
-        </el-card>
-      </el-col>
-      <el-col :span="16">
-        <el-row :gutter="20" class="mgb20">
-          <el-col :span="8">
-            <el-card shadow="hover" :body-style="{ padding: '0px' }">
-              <div class="grid-content grid-con-1">
-                <el-icon class="grid-con-icon">
-                  <User/>
+        </el-table-column>
+        <el-table-column label="操作" width="180px">
+          <template v-slot="scope">
+            <!-- 修改按钮 -->
+            <el-button type="primary" v-model="scope.row.Id" size="mini">
+              <el-icon>
+                <edit/>
+              </el-icon>
+            </el-button>
+            <!-- 删除按钮 -->
+            <el-button type="danger" size="mini">
+              <el-icon>
+                <delete/>
+              </el-icon>
+            </el-button>
+            <!-- 分配角色按钮 -->
+            <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
+              <el-button type="warning" size="mini">
+                <el-icon>
+                  <setting/>
                 </el-icon>
-                <div class="grid-cont-right">
-                  <div class="grid-num">1234</div>
-                  <div>用户访问量</div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col :span="8">
-            <el-card shadow="hover" :body-style="{ padding: '0px' }">
-              <div class="grid-content grid-con-2">
-                <el-icon class="grid-con-icon">
-                  <ChatDotRound/>
-                </el-icon>
-                <div class="grid-cont-right">
-                  <div class="grid-num">321</div>
-                  <div>系统消息</div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col :span="8">
-            <el-card shadow="hover" :body-style="{ padding: '0px' }">
-              <div class="grid-content grid-con-3">
-                <el-icon class="grid-con-icon">
-                  <Goods/>
-                </el-icon>
-                <div class="grid-cont-right">
-                  <div class="grid-num">5000</div>
-                  <div>商品数量</div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-        <el-card shadow="hover" style="height: 403px">
-          <template #header>
-            <div class="clearfix">
-              <span>待办事项</span>
-              <el-button style="float: right; padding: 3px 0" text>添加</el-button>
-            </div>
+              </el-button>
+            </el-tooltip>
           </template>
+        </el-table-column>
+      </el-table>
+      <!-- 页面区域 -->
+      <el-pagination :current-page="queryInfo.pagenum" :page-sizes="[1, 2, 5, 10]"
+                     :page-size="queryInfo.pagesize" layout="total, sizes, prev, pager, next, jumper"
+                     :total="total" @size-change="handleSizeChange" @current-change="handleCurrentChange"
+      >
+      </el-pagination>
 
-          <el-table :show-header="false" :data="todoList" style="width: 100%">
-            <el-table-column width="40">
-              <template #default="scope">
-                <el-checkbox v-model="scope.row.status"></el-checkbox>
-              </template>
-            </el-table-column>
-            <el-table-column>
-              <template #default="scope">
-                <div
-                    class="todo-item"
-                    :class="{
-										'todo-item-del': scope.row.status
-									}"
-                >
-                  {{ scope.row.title }}
-                </div>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="12">
-        <el-card shadow="hover">
-          <schart ref="bar" class="schart" canvasId="bar" :options="options"></schart>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card shadow="hover">
-          <schart ref="line" class="schart" canvasId="line" :options="options2"></schart>
-        </el-card>
-      </el-col>
-    </el-row>
+
+      <!-- 添加用户的对话框 -->
+      <el-dialog v-model="addDialogVisible" title="添加用户" width="50%" :before-close="handleClose">
+        <!-- 内容主体区域 -->
+        <el-form ref="addFormRef" :model="addForm"
+                 :rules="addFormRules"
+                 label-width="70px">
+          <el-form-item label="用户名" prop="username">
+            <el-input v-model="addForm.username"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" prop="password">
+            <el-input v-model="addForm.password"></el-input>
+          </el-form-item>
+          <el-form-item label="邮箱" prop="email">
+            <el-input v-model="addForm.email"></el-input>
+          </el-form-item>
+          <el-form-item label="手机" prop="mobile">
+            <el-input v-model="addForm.mobile"></el-input>
+          </el-form-item>
+        </el-form>
+        <!-- 底部区域 -->
+        <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="addDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="addDialogVisible = false"
+        >确定</el-button>
+      </span>
+        </template>
+      </el-dialog>
+    </el-card>
   </div>
 </template>
 
-<script setup lang="ts" name="dashboard">
-import Schart from 'vue-schart';
-import {reactive} from 'vue';
-import imgurl from '../../assets/img/img.jpg';
-
-const name = localStorage.getItem('ms_username');
-const role: string = name === 'admin' ? '超级管理员' : '普通用户';
-
-const options = {
-  type: 'bar',
-  title: {
-    text: '最近一周各品类销售图'
-  },
-  xRorate: 25,
-  labels: ['周一', '周二', '周三', '周四', '周五'],
-  datasets: [
-    {
-      label: '家电',
-      data: [234, 278, 270, 190, 230]
-    },
-    {
-      label: '百货',
-      data: [164, 178, 190, 135, 160]
-    },
-    {
-      label: '食品',
-      data: [144, 198, 150, 235, 120]
+<script>
+export default {
+  data() {
+    return {
+      // 获取用户列表的参数对象
+      queryInfo: {
+        query: '', // 查询参数
+        pagenum: 1, // 当前页码
+        pagesize: 2 // 每页显示条数
+      },
+      // 用户列表
+      userlist: [],
+      // 总数据条数
+      total: 0,
+      // 控制添加用对话框的显示和隐藏，默认false,表示隐藏对话框
+      addDialogVisible: false,
+      // 添加用户的表单数据对象
+      addForm: {
+        username: '',
+        password: '',
+        email: '',
+        mobile: ''
+      },
+      // 添加表单的验证规则对象
+      addFormRules: {
+        username: [
+          {
+            required: true,
+            message: '请输入用户名',
+            trigger: 'blur'
+          },
+          {
+            min: 3,
+            max: 10,
+            message: '用户名的长度在 3 - 10个字符之间',
+            trigger: 'blur'
+          }
+        ],
+        password: [
+          {
+            required: true,
+            message: '请输入密码',
+            trigger: 'blur'
+          },
+          {
+            min: 6,
+            max: 15,
+            message: '密码的长度在 6 - 15个字符之间',
+            trigger: 'blur'
+          }
+        ],
+        email: [
+          {
+            required: true,
+            message: '请输入邮箱',
+            trigger: 'blur'
+          }
+        ],
+        mobile: [
+          {
+            required: true,
+            message: '请输入手机号',
+            trigger: 'blur'
+          },
+          {
+            min: 11,
+            max: 11,
+            message: '手机号长度在11个字符',
+            trigger: 'blur'
+          }
+        ]
+      }
     }
-  ]
-};
-const options2 = {
-  type: 'line',
-  title: {
-    text: '最近几个月各品类销售趋势图'
   },
-  labels: ['6月', '7月', '8月', '9月', '10月'],
-  datasets: [
-    {
-      label: '家电',
-      data: [234, 278, 270, 190, 230]
+
+
+  created() {
+    this.getUserList()
+  },
+  methods: {
+    async getUserList() {
+      const {data: res} = await this.$http.get('users', {
+        params: this.queryInfo
+      })
+      if (res.meta.status !== 200) return this.$message.error('获取用户列表失败')
+      this.userlist = res.data.users
+      this.total = res.data.total
+      console.log(res)
     },
-    {
-      label: '百货',
-      data: [164, 178, 150, 135, 160]
+    // 监听 page size 改变的事件
+    handleSizeChange(newSize) {
+      this.queryInfo.pagesize = newSize
+      this.getUserList()
     },
-    {
-      label: '食品',
-      data: [74, 118, 200, 235, 90]
+    // 监听 页码值 改变的事件
+    handleCurrentChange(newPage) {
+      this.queryInfo.pagenum = newPage
+      this.getUserList()
+    },
+    // 监听 switch 开头状态的改变
+    async userStateChanged(userinfo) {
+      const {data: res} = await this.$http.put(`users/${userinfo.id}/state/${userinfo.mg_state}`)
+      if (res.meta.status !== 200) {
+        userinfo.mg_state = !userinfo.mg_state
+        return this.$message.error('更新用户状态失败')
+      }
+      this.$message.success('更新用户状态成功')
     }
-  ]
-};
-const todoList = reactive([
-  {
-    title: '今天要修复100个bug',
-    status: false
-  },
-  {
-    title: '今天要修复100个bug',
-    status: false
-  },
-  {
-    title: '今天要写100行代码加几个bug吧',
-    status: false
-  },
-  {
-    title: '今天要修复100个bug',
-    status: false
-  },
-  {
-    title: '今天要修复100个bug',
-    status: true
-  },
-  {
-    title: '今天要写100行代码加几个bug吧',
-    status: true
   }
-]);
+
+}
 </script>
 
-<style scoped>
-.el-row {
-  margin-bottom: 20px;
-}
+<style lang="less" scoped>
 
-.grid-content {
-  display: flex;
-  align-items: center;
-  height: 100px;
-}
-
-.grid-cont-right {
-  flex: 1;
-  text-align: center;
-  font-size: 14px;
-  color: #999;
-}
-
-.grid-num {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.grid-con-icon {
-  font-size: 50px;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
-  color: #fff;
-}
-
-.grid-con-1 .grid-con-icon {
-  background: rgb(45, 140, 240);
-}
-
-.grid-con-1 .grid-num {
-  color: rgb(45, 140, 240);
-}
-
-.grid-con-2 .grid-con-icon {
-  background: rgb(100, 213, 114);
-}
-
-.grid-con-2 .grid-num {
-  color: rgb(100, 213, 114);
-}
-
-.grid-con-3 .grid-con-icon {
-  background: rgb(242, 94, 67);
-}
-
-.grid-con-3 .grid-num {
-  color: rgb(242, 94, 67);
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 20px;
-}
-
-.user-info-cont {
-  padding-left: 50px;
-  flex: 1;
-  font-size: 14px;
-  color: #999;
-}
-
-.user-info-cont div:first-child {
-  font-size: 30px;
-  color: #222;
-}
-
-.user-info-list {
-  font-size: 14px;
-  color: #999;
-  line-height: 25px;
-}
-
-.user-info-list span {
-  margin-left: 70px;
-}
-
-.mgb20 {
-  margin-bottom: 20px;
-}
-
-.todo-item {
-  font-size: 14px;
-}
-
-.todo-item-del {
-  text-decoration: line-through;
-  color: #999;
-}
-
-.schart {
-  width: 100%;
-  height: 300px;
-}
 </style>
