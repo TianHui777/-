@@ -152,6 +152,11 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* 选课界面 */ '../components/student/CourseComponent.vue'),
             },
             {
+                path: '/student/problem',
+                name: 'problem',
+                component: () => import(/* 选课界面 */ '../components/student/ProblemComponent.vue'),
+            },
+            {
                 path: '/student/home',
                 name: 'home',
                 component: () => import(/* 学生主页 */ '../components/student/HomeComponent.vue'),

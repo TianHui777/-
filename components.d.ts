@@ -35,6 +35,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./src/components/header.vue')['default']
     HomeComponent: typeof import('./src/components/student/HomeComponent.vue')['default']
     MonacoEditor: typeof import('./src/components/monacoEditor.vue')['default']
+    ProblemComponent: typeof import('./src/components/student/ProblemComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/sidebar.vue')['default']
