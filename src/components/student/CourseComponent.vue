@@ -4,6 +4,7 @@
 
 <div>例如:</div>
 <RouterLink to="/student/problem">点击进入题目选择</RouterLink>
+  <p>test</p>
 </template>
 
 <script setup lang="ts">
