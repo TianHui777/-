@@ -4,7 +4,7 @@
       <div class="ms-title">后台管理系统</div>
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
         <el-form-item prop="username">
-          <el-input v-model="param.username" placeholder="username">
+          <el-input v-model="param.userName" placeholder="username">
             <template #prepend>
               <el-button :icon="User"></el-button>
             </template>
@@ -41,18 +41,18 @@ import type {FormInstance, FormRules} from 'element-plus';
 import {Lock, User} from '@element-plus/icons-vue';
 
 interface LoginInfo {
-  username: string;
+  userName: string;
   password: string;
 }
 
 const router = useRouter();
 const param = reactive<LoginInfo>({
-  username: 'admin',
+  userName: 'admin',
   password: '123123'
 });
 
 const rules: FormRules = {
-  username: [
+  userName: [
     {
       required: true,
       message: '请输入用户名',
@@ -68,8 +68,8 @@ const submitForm = (formEl: FormInstance | undefined) => {
   formEl.validate((valid: boolean) => {
     if (valid) {
       ElMessage.success('登录成功');
-      localStorage.setItem('ms_username', param.username);
-      const keys = permiss.defaultList[param.username == 'admin' ? 'admin' : 'user'];
+      localStorage.setItem('ms_username', param.userName);
+      const keys = permiss.defaultList[param.userName == 'admin' ? 'admin' : 'user'];
       permiss.handleSet(keys);
       localStorage.setItem('ms_keys', JSON.stringify(keys));
       router.push('/');

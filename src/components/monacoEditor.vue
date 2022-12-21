@@ -4,8 +4,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onBeforeUnmount, onMounted, ref, watch} from 'vue'
-import {editorProps} from '../type/monacoEditorType'
+import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { editorProps } from '../type/monacoEditorType'
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
@@ -17,7 +17,7 @@ export default defineComponent({
   name: 'monacoEditor',
   props: editorProps,
   emits: ['update:modelValue', 'change', 'editor-mounted'],
-  setup(props, {emit}) {
+  setup(props, { emit }) {
     self.MonacoEnvironment = {
       getWorker(_: string, label: string) {
         if (label === 'json') {
@@ -65,30 +65,30 @@ export default defineComponent({
       emit('editor-mounted', editor)
     }
     watch(
-        () => props.modelValue,
-        newValue => {
-          if (editor) {
-            const value = editor.getValue()
-            if (newValue !== value) {
-              editor.setValue(newValue)
-            }
+      () => props.modelValue,
+      newValue => {
+        if (editor) {
+          const value = editor.getValue()
+          if (newValue !== value) {
+            editor.setValue(newValue)
           }
         }
+      }
     )
 
     watch(
-        () => props.options,
-        newValue => {
-          editor.updateOptions(newValue)
-        },
-        {deep: true}
+      () => props.options,
+      newValue => {
+        editor.updateOptions(newValue)
+      },
+      { deep: true }
     )
 
     watch(
-        () => props.language,
-        newValue => {
-          monaco.editor.setModelLanguage(editor.getModel()!, newValue)
-        }
+      () => props.language,
+      newValue => {
+        monaco.editor.setModelLanguage(editor.getModel()!, newValue)
+      }
     )
 
     onBeforeUnmount(() => {
@@ -99,7 +99,7 @@ export default defineComponent({
       init()
     })
 
-    return {codeEditBox}
+    return { codeEditBox }
   },
 })
 </script>

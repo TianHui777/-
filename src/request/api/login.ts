@@ -2,15 +2,15 @@ import service from '../index'
 
 // 登录接口所需要的数据
 interface loginData {
-    username: string
+    userName: string
     password: string
 }
 
 //登录接口
-export function login(auth: loginData) {
+export function login(data: loginData) {
     return service({
         url: "/login",
-        method: "GET",
-        auth
+        method: "POST",
+        data
     })
 }
