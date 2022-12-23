@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import Header from "../components/teacher/header.vue"
-import Sidebar from "../components/teacher/sidebar.vue";
-import {useSidebarStore} from '../store/sidebar';
+import Header from "../../components/teacher/header.vue"
+import {useSidebarStore} from '../../store/sidebar';
+import Sidebar from "../../components/teacher/sidebar.vue";
 const sidebar = useSidebarStore();
 </script>
 

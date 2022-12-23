@@ -6,6 +6,7 @@ const service = axios.create({
     // baseURL:"https://www.fastmock.site/mock/88589a30789822d059bca54bf21044d8/api",
     timeout: 5000,
     headers: {
+        'Accept': 'application/json',
         "Content-Type": "application/json;charset=utf-8",
     }
 })
@@ -16,6 +17,8 @@ service.interceptors.request.use((config) => {
     if (localStorage.getItem('token')) {
         config.headers.token = localStorage.getItem('token') || ""
     }
+
+
     return config
 }, error => {
     return Promise.reject(error)
