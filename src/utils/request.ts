@@ -1,31 +1,22 @@
-import axios, {AxiosInstance, AxiosError, AxiosResponse, AxiosRequestConfig} from 'axios';
+import axios from 'axios';
 
-const service: AxiosInstance = axios.create({
-    timeout: 5000
+const service = axios.create({
+    baseURL:"http://kumanxuan1.f3322.net:8001",
+    timeout:5000
 });
 
-service.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-        return config;
-    },
-    (error: AxiosError) => {
-        console.log(error);
-        return Promise.reject();
-    }
-);
+//2. 请求拦截器
+service.interceptors.request.use(config => {
+    return config;
+}, error => {
+    Promise.reject(error);
+});
 
-service.interceptors.response.use(
-    (response: AxiosResponse) => {
-        if (response.status === 200) {
-            return response;
-        } else {
-            Promise.reject();
-        }
-    },
-    (error: AxiosError) => {
-        console.log(error);
-        return Promise.reject();
-    }
-);
-
+//3. 响应拦截器
+service.interceptors.response.use(response => {
+    //判断code码
+    return response.data;
+},error => {
+    return Promise.reject(error);
+});
 export default service;

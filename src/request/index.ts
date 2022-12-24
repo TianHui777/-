@@ -1,13 +1,14 @@
 import axios from "axios";
 //创建axios实例
 const service = axios.create({
-    baseURL: "http://localhost:7777",
+    // baseURL: "http://localhost:7777",
     // baseURL:"https://api.apiopen.top/api",
     // baseURL:"https://www.fastmock.site/mock/88589a30789822d059bca54bf21044d8/api",
-    timeout: 5000,
-    headers: {
-        "Content-Type": "application/json;charset=utf-8",
-    }
+    baseURL:"http://kumanxuan1.f3322.net:8001",
+    timeout: 5000
+    // headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    // }
 })
 
 //请求拦截
