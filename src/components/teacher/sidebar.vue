@@ -38,7 +38,7 @@
           </el-sub-menu>
         </template>
         <template v-else>
-          <el-menu-item :index="item.index" :key="item.index" v-permiss="item.permiss">
+          <el-menu-item :index="item.index" :key="item.index">
             <el-icon>
               <component :is="item.icon"></component>
             </el-icon>
@@ -60,19 +60,22 @@ const items = [
     icon: 'Odometer',
     index: '/teacher/release',
     title: '发布实验',
-    permiss: '1'
+    permiss: '1',
+    subs: false
   },
   {
     icon: 'Calendar',
     index: '/teacher/addStudent',
     title: '添加学生',
-    permiss: '2'
+    permiss: '2',
+    subs: false
   },
   {
     icon: 'DocumentCopy',
     index: '/teacher/consult',
     title: '实验完成情况',
-    permiss: '3'
+    permiss: '3',
+    subs: false
   },
 ];
 
@@ -106,3 +109,6 @@ const sidebar = useSidebarStore();
   height: 100%;
 }
 </style>
+
+
+
