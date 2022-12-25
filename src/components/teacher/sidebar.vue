@@ -72,7 +72,7 @@ const items = [
   },
   {
     icon: 'DocumentCopy',
-    index: '/teacher/consult',
+    index: '/teacher/shiyan',
     title: '实验完成情况',
     permiss: '3',
     subs: false

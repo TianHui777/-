@@ -124,6 +124,14 @@ const routes: RouteRecordRaw[] = [
         component: () => import( /* webpackChunkName: "login" */ "../views/LoginView.vue")
     },
     {
+        path: "/register",
+        name: "Register",
+        meta: {
+            title: '注册'
+        },
+        component: () => import( /* webpackChunkName: "login" */ "../views/RegisterView.vue")
+    },
+    {
         path: '/403',
         name: '403',
         meta: {
@@ -178,8 +186,8 @@ const routes: RouteRecordRaw[] = [
     },
 
     /*
-        教师页面
-     */
+    教师页面
+ */
     {
         path: '/teacher',
         name: 'teacher',
@@ -201,9 +209,15 @@ const routes: RouteRecordRaw[] = [
             },
             {
                 path: '/teacher/consult',
-                name: 'consult',
+                // name: 'consult',
                 component: () => import(/* 发布实验 */ '../components/teacher/ConsultComponent.vue'),
             },
+            {
+                path: '/teacher/shiyan',
+                // name: 'consult',
+                component: () => import(/* 发布实验 */ '../components/teacher/ShiyanComponent.vue'),
+            },
+
 
         ]
 

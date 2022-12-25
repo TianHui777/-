@@ -9,11 +9,11 @@
           <li v-for="item in courseList" :key="item.id">
             <img src="../../assets/img/course.png" />
             <div class='course-content'>
-              <h3>{{item.name}}</h3>
-              <div>{{item.id}}人</div>
-              <div class='price'>
-                <div class='price-total'>老师：</div>
-              </div>
+              <h3>{{item.className }}</h3>
+              <div>学生数：{{item.studentNum}}人</div>
+
+                <div class='price-total'>老师数：{{item.teacherNum}}人</div>
+
             </div>
           </li>
         </ul>
@@ -22,40 +22,6 @@
         </div>
       </div>
     </div>
-<!--    <div class="content-container">-->
-<!--      <div class="course-card-list">-->
-<!--        <transition name="fade-transform" mode="out-in" v-for="course in courseList" :key="course.id">-->
-<!--          <div class="single-popular-course" v-show="course.show" @click="handleStartCourse(course)">-->
-<!--            <img :src="course.imag" :alt="course.name">-->
-<!--            <div class="course-content">-->
-<!--              <h4>{{ course.name }}</h4>-->
-<!--              <div class="meta d-flex align-items-center" v-if="course.college">-->
-<!--                <a href="#">{{ course.id }} & {{ course.id }}</a>-->
-<!--                <span><i class="fa fa-circle" aria-hidden="true"></i></span>-->
-<!--                <a href="#">{{ course.name}}</a>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="seat-rating-fee d-flex justify-content-between">-->
-<!--              <div class="seat-rating h-100 d-flex align-items-center">-->
-<!--                <div class="seat" title="已报名学员人数">-->
-<!--                  <i class="el-icon-user-solid" aria-hidden="true"></i> {{course.memberCount}}-->
-<!--                </div>-->
-<!--                <div class="rating" title="难度等级">-->
-<!--                  <i class="el-icon-star-on" aria-hidden="true"></i> {{course.level}}-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </transition>-->
-<!--        &lt;!&ndash; 对齐 &ndash;&gt;-->
-<!--        <i v-if="courseList !== undefined && courseList.length > 0" v-for="count in (courseList.length)" :key="count"></i>-->
-<!--      </div>-->
-<!--      <el-row style="text-align: center; margin-bottom: 50px;">-->
-<!--        <el-col :span="24">-->
-<!--          <el-button v-if="!isLastPage" type="default" @click="scrollList" :loading="loading" style="margin-bottom: 100px;">加载更多</el-button>-->
-<!--        </el-col>-->
-<!--      </el-row>-->
-<!--    </div>-->
   </div>
 </template>
 <script setup lang="ts">
@@ -63,9 +29,10 @@ import {courseSearch} from "../../request/api/course";
 import {ref} from "vue";
 
 //课程数据
-let courseList = ref([]);
+let courseList =[];
 courseSearch().then(res=>{
-  courseList.value = res.data.categoryList;
+  courseList = res;
+  console.log(courseList)
 }).catch(err=>{console.log(err)})
 
 </script>
