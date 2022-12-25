@@ -1,75 +1,41 @@
 <template>
   <el-container>
-    <el-aside width="500px">
-      <!--题目展示-->
-      <div class="container mx-auto px-10">
-        <h1>题目描述</h1>
-        <p>背包问题背包问题背包问题背包问题背包问题背包问题背包问题背包问题背包问题</p>
-      </div>
-
-
-    </el-aside>
+    <el-aside width="500px">题目列表</el-aside>
     <el-main>
-
-      <div class="flex justify-space-between mb-4 flex-wrap gap-4">
-        <el-button
-            v-for="button in buttons"
-            :key="button.text"
-            :type="button.type"
-            text
-            @click="changeLanguage(button.text)"
-        >{{ button.text }}
-        </el-button
-        >
-      </div>
-      <monacoEditor
+      <el-button type="primary" @click="runCode(code)">
+        <el-icon>
+          <VideoPlay/>
+        </el-icon>
+      </el-button>
+      <codemirror
           v-model="code"
-          :language="language.type"
-          width="900px"
-          height="600px"
-          @editor-mounted="editorMounted"
+          placeholder="Code gose here..."
+          :style="{ height: '400px',width:'700px' }"
+          :autofocus="true"
+          :indent-with-tab="true"
+          :tabSize="2"
+          :extensions="extensions"
+      />
 
-      ></monacoEditor>
     </el-main>
-
 
   </el-container>
 
-
 </template>
 
-<script setup lang="ts">
+<script setup>
+import {Codemirror} from "vue-codemirror";
+import {javascript} from "@codemirror/lang-javascript";
+import {python} from "@codemirror/lang-python";
+import {oneDark} from "@codemirror/theme-one-dark";
 
-import MonacoEditor from "./monacoEditor.vue";
-import * as monaco from 'monaco-editor'
-import {reactive, ref, computed} from "vue";
+import {ref} from "vue";
 
-let code = ref('123')
-setInterval((code) => {
+
+let code = ref(`console.log('Hello, world!')`);
+const extensions = [python(), oneDark];
+const runCode = (code) => {
   console.log(code)
-}, 5000)
-let language = reactive({type: 'python'})
-const editorMounted = (editor: monaco.editor.IStandaloneCodeEditor) => {
-  console.log('editor实例加载完成', editor)
 }
-
-// 语言选择按钮
-const buttons = [
-  {type: 'plain', text: 'java'},
-  {type: 'primary', text: 'python'},
-  {type: 'success', text: 'javascript'},
-  {type: 'warning', text: 'typeScript'},
-] as const
-
-// 语言选择按钮点击事件
-const changeLanguage = (type: string) => {
-  language = {type: type}
-
-}
-
 
 </script>
-
-<style scoped>
-
-</style>

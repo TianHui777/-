@@ -8,8 +8,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.9",
+    "@codemirror/lang-cpp": "^6.0.2",
+    "@codemirror/lang-javascript": "^6.1.2",
+    "@codemirror/lang-python": "^6.1.1",
+    "@codemirror/theme-one-dark": "^6.1.0",
+    "@element-plus/icons-vue": "^2.0.10",
     "axios": "^0.27.2",
+    "codemirror": "^6.0.1",
     "element-plus": "^2.2.14",
     "md-editor-v3": "^2.2.1",
     "monaco-editor": "^0.30.1",

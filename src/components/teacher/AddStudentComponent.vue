@@ -103,6 +103,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -113,7 +115,17 @@ export default {
         pagesize: 2 // 每页显示条数
       },
       // 用户列表
-      userlist: [],
+      userlist: [
+        {
+          username: "tianhui",
+          email: "1230",
+          mobile: "123",
+          role_name: "1",
+          mg_state: "1",
+
+
+        },
+      ],
       // 总数据条数
       total: 0,
       // 控制添加用对话框的显示和隐藏，默认false,表示隐藏对话框
@@ -183,7 +195,7 @@ export default {
   },
   methods: {
     async getUserList() {
-      const {data: res} = await this.$http.get('users', {
+      const {data: res} = await axios.get('users', {
         params: this.queryInfo
       })
       if (res.meta.status !== 200) return this.$message.error('获取用户列表失败')

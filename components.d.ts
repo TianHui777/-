@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AddStudentComponent: typeof import('./src/components/teacher/AddStudentComponent.vue')['default']
     CodeComponent: typeof import('./src/components/student/CodeComponent.vue')['default']
+    Codemirror: typeof import('./src/components/student/Codemirror.vue')['default']
     ConsultComponent: typeof import('./src/components/teacher/ConsultComponent.vue')['default']
     CourseComponent: typeof import('./src/components/student/CourseComponent.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
@@ -27,6 +28,7 @@ declare module '@vue/runtime-core' {
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
