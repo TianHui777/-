@@ -80,7 +80,7 @@
   </div>
 </template>
 
-<script >
+<script>
 import {ref} from "vue";
 import axios from "axios";
 import {ElMessage} from "element-plus";
@@ -91,9 +91,9 @@ export default {
     return {
       value1: value,
       classOptions: [{
-        value: '数据结构'
+        value: 'python程序设计'
       }, {
-        value: '软工2'
+        value: 'C++程序设计'
       }],
       paper: {},
     }
@@ -109,22 +109,26 @@ export default {
       })
     },
     onSubmit(){
-      axios.post('',{
-        ...this.paper
-      }).then(res=>{
-        if(res.data.state===200){
+      // axios.post('',{
+      //   ...this.paper
+      // }).then(res=>{
+      //   if(res.data.state===200){
           ElMessage({
             message:'发布成功',
             type:'success'
           })
-        }
-      })
+      //   }
+      // })
     },
     cancel(){
       this.paper={}
     }
   }
 }
+const success = () => {
+  ElMessage('保存成功！')
+};
+
 
 </script>
 
