@@ -6,17 +6,50 @@
     <div class='course-list'>
       <div class='list-main'>
         <ul class='list-c'>
-          <li v-for="item in courseList" :key="item.id">
+          <li>
+            <router-link to="/student/problem">
             <img src="../../assets/img/course.png" />
             <div class='course-content'>
-              <h3>{{item.className }}</h3>
-              <div>学生数：{{item.studentNum}}人</div>
-
-                <div class='price-total'>老师数：{{item.teacherNum}}人</div>
-
+              <h3>python程序设计</h3>
+              <div>学生数：50人</div>
+                <div class='price-total'>老师：王普明</div>
+            </div>
+            </router-link>
+          </li>
+          <li>
+            <img src="../../assets/img/course.png" />
+            <div class='course-content'>
+              <h3>C++程序设计</h3>
+              <div>学生数：45人</div>
+              <div class='price-total'>老师：王普明</div>
+            </div>
+          </li>
+          <li>
+            <img src="../../assets/img/course.png" />
+            <div class='course-content'>
+              <h3>数据库概论</h3>
+              <div>学生数：40人</div>
+              <div class='price-total'>老师：张璇</div>
+            </div>
+          </li>
+          <li>
+            <img src="../../assets/img/course.png" />
+            <div class='course-content'>
+              <h3>数据结构</h3>
+              <div>学生数：55人</div>
+              <div class='price-total'>老师：赵娜</div>
+            </div>
+          </li>
+          <li>
+            <img src="../../assets/img/course.png" />
+            <div class='course-content'>
+              <h3>计算机网络</h3>
+              <div>学生数：40人</div>
+              <div class='price-total'>老师：刘春花</div>
             </div>
           </li>
         </ul>
+
         <div class='list-b'>
           <el-pagination background layout="prev, pager, next" :total="1000" />
         </div>

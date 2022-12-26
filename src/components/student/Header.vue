@@ -26,7 +26,7 @@
         </div>
         <div class='content-shopping'>
           <el-icon color='#808080' :size='24'>
-            <shopping-cart style="width: 24px; height:24px;"/>
+            <shopping-cart style="+width: 24px; height:24px;"/>
           </el-icon>
         </div>
         <div class='content-login'>
@@ -36,7 +36,6 @@
         <div class='content-login'>
           <router-link to="/student/info">个人信息</router-link>
         </div>
-
 
       </div>
     </div>

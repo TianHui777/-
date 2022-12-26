@@ -164,10 +164,15 @@ const routes: RouteRecordRaw[] = [
                 name: 'course',
                 component: () => import(/* 选课界面 */ '../components/student/CourseComponent.vue'),
             },
+            // {
+            //     path: "/student/problem",
+            //     name: "problem",
+            //     component: () => import(/* 题目选择界面 */ "../components/student/ProblemComponent.vue"),
+            // },
             {
                 path: '/student/problem',
                 name: 'problem',
-                component: () => import(/* 选课界面 */ '../components/student/ProblemComponent.vue'),
+                component: () => import(/* 题目选择界面 */ '../components/student/ProblemComponent.vue'),
             },
             {
                 path: '/student/home',
