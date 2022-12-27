@@ -117,8 +117,7 @@ export default {
             message:'发布成功',
             type:'success'
           })
-      //   }
-      // })
+   0
     },
     cancel(){
       this.paper={}
