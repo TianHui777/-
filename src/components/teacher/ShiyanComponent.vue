@@ -29,7 +29,34 @@ export default {
   name: "ShiyanComponent",
   data(){
     return{
-      tableData:[],
+
+      tableData:[
+        {
+          id:'1',
+          name:'输出hello world',
+          startTime:'2022-12-23',
+          endTime:'2022-12-28'
+        },
+        {
+          id:'2',
+          name:'简单运算',
+          startTime:'2022-12-23',
+          endTime:'2022-12-28'
+        },
+        {
+          id:'3',
+          name:'输出HELLO World',
+          startTime:'2022-12-23',
+          endTime:'2022-12-28'
+        },
+        {
+          id:'4',
+          name:'输出Hello world',
+          startTime:'2022-12-23',
+          endTime:'2022-12-28'
+        }
+
+      ],
     }
   },
   created() {
@@ -37,7 +64,7 @@ export default {
   },
   methods:{
     getInfo(){
-      axios.post('',{
+      axios.post('http://boer.ink:5003',{
       }).then(res=>{
 
       })

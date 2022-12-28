@@ -14,14 +14,6 @@
             </el-tag>
           </template>
         </el-table-column>
-
-        <!--        <el-table-column label="操作"  align="center">-->
-        <!--          <template #default="scope">-->
-        <!--            <el-button text  @click="handle(scope.$index, scope.row.stuId)" style="color: #409eff">-->
-        <!--              查看详情-->
-        <!--            </el-button>-->
-        <!--          </template>-->
-        <!--        </el-table-column>-->
       </el-table>
     </div>
   </div>
@@ -37,7 +29,27 @@ export default {
       tableData:[
         {
           stuId:'1',
-          stuName:'ghuisd',
+          stuName:'张三',
+          state:'已完成',
+        },
+        {
+          stuId:'2',
+          stuName:'李四',
+          state:'未完成',
+        },
+        {
+          stuId:'3',
+          stuName:'王五',
+          state:'已完成',
+        },
+        {
+          stuId:'4',
+          stuName:'赵六',
+          state:'未完成',
+        },
+        {
+          stuId:'5',
+          stuName:'老六',
           state:'已完成',
         }
       ],
@@ -112,8 +124,8 @@ export default {
           center: ['50%', '50%'],  //整个饼图在整个父元素中的位置
           // data:''               //饼图数据
           data: [                  //每个模块的名字和值
-            { name: '已完成', value: 89 },
-            { name: '未完成', value: 67},
+            { name: '已完成', value: 3 },
+            { name: '未完成', value: 2},
           ],
           itemStyle: {
             normal: {
