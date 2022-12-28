@@ -21,7 +21,12 @@
 
               <div class='course'>
                 <div>01 第一个函数</div>
-              </div><router-link to="/student/code">
+              </div>
+              <div class='course'>
+                <div>2022-12-23至2022-12-28</div>
+              </div>
+
+              <router-link to="/student/code">
               <div class='course-video'>开始学习</div>
               </router-link>
             </li>
@@ -29,7 +34,11 @@
 
               <div class='course'>
                 <div>02 在函数中修改全局变量</div>
-              </div><router-link to="/student/code">
+              </div>
+              <div class='course'>
+                <div>2022-12-23至2022-12-28</div>
+              </div>
+              <router-link to="/student/code">
               <div class='course-video'>开始学习</div>
               </router-link>
             </li>
@@ -37,7 +46,11 @@
 
               <div class='course'>
                 <div>03 练习使用参数</div>
-              </div><router-link to="/student/code">
+              </div>
+              <div class='course'>
+                <div>2022-12-23至2022-12-28</div>
+              </div>
+              <router-link to="/student/code">
               <div class='course-video'>开始学习</div>
               </router-link>
             </li>
@@ -45,57 +58,66 @@
 
               <div class='course'>
                 <div>04 具有多个返回值的函数</div>
-              </div><router-link to="/student/code">
+              </div>
+              <div class='course'>
+                <div>2022-12-23至2022-12-28</div>
+              </div>
+              <router-link to="/student/code">
               <div class='course-video'>开始学习</div></router-link>
             </li>
-            <li>
-              <div class='course'>
-                <div>05 Lambda 表达式</div>
-              </div>
-              <div class='course-video'>开始学习</div>
-            </li>
-            <li>
-              <div class='course'>
-                <div>06 使用关键字参数</div>
-              </div>
-              <div class='course-video'>开始学习</div>
-            </li>
-            <li>
-              <div class='course'>
-                <div>07 使用可变长参数</div>
-              </div>
-              <div class='course-video'>开始学习</div>
-            </li>
-            <li>
-              <div class='course'>
-                <div>08 使用递归</div>
-              </div>
-              <div class='course-video'>开始学习</div>
-            </li>
-            <li>
-              <div class='course'>
-                <div>09 生成器与yield</div>
-              </div>
-              <div class='course-video'>开始学习</div>
-            </li>
+<!--            <li>-->
+<!--              <div class='course'>-->
+<!--                <div>05 Lambda 表达式</div>-->
+<!--              </div>-->
+<!--              <div>2022-12-23至2022-12-28</div>-->
+<!--              <div class='course-video'>开始学习</div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <div class='course'>-->
+<!--                <div>06 使用关键字参数</div>-->
+<!--              </div>-->
+<!--              <div>2022-12-23至2022-12-28</div>-->
+<!--              <div class='course-video'>开始学习</div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <div class='course'>-->
+<!--                <div>07 使用可变长参数</div>-->
+<!--              </div>-->
+<!--              <div>2022-12-23至2022-12-28</div>-->
+<!--              <div class='course-video'>开始学习</div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <div class='course'>-->
+<!--                <div>08 使用递归</div>-->
+<!--              </div>-->
+<!--              <div>2022-12-23至2022-12-28</div>-->
+<!--              <div class='course-video'>开始学习</div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <div class='course'>-->
+<!--                <div>09 生成器与yield</div>-->
+<!--              </div>-->
+<!--              <div>2022-12-23至2022-12-28</div>-->
+<!--              <div class='course-video'>开始学习</div>-->
+<!--            </li>-->
           </ul>
         </div>
-        <div class='item'>
-          <ul>
-            <li>
-              <div class='course'>
-                <div>视频：1-1开发语言必会知识（10:44)</div>
-              </div>
-              <div class='course-video'>开始学习</div>
-            </li>
-            <li>
-              <div class='course'>
-                <div>视频：1-1开发语言必会知识（10:44)</div>
-              </div>
-              <div class='course-video'>开始学习</div>
-            </li>
-          </ul>
-        </div>
+<!--        <div class='item'>-->
+<!--          <ul>-->
+<!--            <li>-->
+<!--              <div class='course'>-->
+<!--                <div>视频：1-1开发语言必会知识（10:44)</div>-->
+<!--              </div>-->
+<!--              <div class='course-video'>开始学习</div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <div class='course'>-->
+<!--                <div>视频：1-1开发语言必会知识（10:44)</div>-->
+<!--              </div>-->
+<!--              <div class='course-video'>开始学习</div>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
       </div>
     </div>
   </div>

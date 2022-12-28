@@ -1,3 +1,169 @@
+<!--<template>-->
+<!--  <div class="chart-container">-->
+<!--    <div id="chartPie" style="width:100%; height:550px;">-->
+<!--      ggg-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</template>-->
+
+<!--<script>-->
+<!--// import * as echarts from 'echarts';-->
+<!--//-->
+<!--// const chartDom = document.getElementById('chartPie');-->
+<!--// const myChart = echarts.init(chartDom);-->
+<!--// let option;-->
+
+<!--// export default {-->
+<!--//   name: "consult",-->
+<!--//   data() {-->
+<!--//     return {-->
+<!--//       option : {-->
+<!--//         title: {-->
+<!--//           text: 'Referer of a Website',-->
+<!--//           subtext: 'Fake Data',-->
+<!--//           left: 'center'-->
+<!--//         },-->
+<!--//         tooltip: {-->
+<!--//           trigger: 'item'-->
+<!--//         },-->
+<!--//         legend: {-->
+<!--//           orient: 'vertical',-->
+<!--//           left: 'left'-->
+<!--//         },-->
+<!--//         series: [-->
+<!--//           {-->
+<!--//             name: 'Access From',-->
+<!--//             type: 'pie',-->
+<!--//             radius: '50%',-->
+<!--//             data: [-->
+<!--//               { value: 1048, name: 'Search Engine' },-->
+<!--//               { value: 735, name: 'Direct' },-->
+<!--//               { value: 580, name: 'Email' },-->
+<!--//               { value: 484, name: 'Union Ads' },-->
+<!--//               { value: 300, name: 'Video Ads' }-->
+<!--//             ],-->
+<!--//             emphasis: {-->
+<!--//               itemStyle: {-->
+<!--//                 shadowBlur: 10,-->
+<!--//                 shadowOffsetX: 0,-->
+<!--//                 shadowColor: 'rgba(0, 0, 0, 0.5)'-->
+<!--//               }-->
+<!--//             }-->
+<!--//           }-->
+<!--//         ]-->
+<!--//       },-->
+<!--//-->
+<!--//       // chartPie: '',-->
+<!--//       // typeName: [],//状态-->
+<!--//       // typeNum: [] ,//数量-->
+<!--//       // getData:[-->
+<!--//       //   {-->
+<!--//       //     typeName:'已完成',-->
+<!--//       //     typeNum:'98'-->
+<!--//       //   },-->
+<!--//       //   {-->
+<!--//       //     typeName:'未完成',-->
+<!--//       //     typeNum:'67'-->
+<!--//       //   }-->
+<!--//       // ]-->
+<!--//     }-->
+<!--//   },-->
+<!--//   created() {-->
+<!--//     option && myChart.setOption(option);-->
+<!--//   },-->
+<!--//   // methods: {-->
+<!--//   //   drawPieChart() {-->
+<!--//   //     // 基于准备好的dom，初始化echarts实例-->
+<!--//   //     this.chartPie = this.$echarts.init(document.getElementById("chartPie"));-->
+<!--//   //     this.chartPie.setOption({-->
+<!--//   //       //设置标题,副标题,以及标题位置居中-->
+<!--//   //       title: {-->
+<!--//   //         text: '实验完成统计',-->
+<!--//   //         //subtext: '纯属虚构',-->
+<!--//   //         x: 'center'-->
+<!--//   //       },-->
+<!--//   //       //具体点击某一项触发的样式内容-->
+<!--//   //       tooltip: {-->
+<!--//   //         trigger: 'item',-->
+<!--//   //         formatter: "{a} <br/>{b} : {c} ({d}%)"-->
+<!--//   //       },-->
+<!--//   //       //左上侧分类条形符-->
+<!--//   //       legend: {-->
+<!--//   //         orient: 'vertical',-->
+<!--//   //         left: 'left',-->
+<!--//   //         //通过跨域获取数据给data赋值-->
+<!--//   //         data: []-->
+<!--//   //       },-->
+<!--//   //       //饼状图类型以及数据源-->
+<!--//   //       series: [-->
+<!--//   //         {-->
+<!--//   //           name: '统计数量',-->
+<!--//   //           type: 'pie',-->
+<!--//   //           //radius: '70%',-->
+<!--//   //           //center: ['50%', '60%'],-->
+<!--//   //           //通过跨域获取数据给data赋值-->
+<!--//   //           data: [],-->
+<!--//   //           //设置饼状图扇形区域的样式-->
+<!--//   //           itemStyle: {-->
+<!--//   //             emphasis: {-->
+<!--//   //               shadowBlur: 10,-->
+<!--//   //               shadowOffsetX: 0,-->
+<!--//   //               shadowColor: 'rgba(0, 0, 0, 0.5)'-->
+<!--//   //             }-->
+<!--//   //           },-->
+<!--//   //         }-->
+<!--//   //       ]-->
+<!--//   //     });-->
+<!--//   //   },-->
+<!--//     //动态获取饼状图的数据-->
+<!--//     // async initData() {-->
+<!--//     //   //url可以在action.js配置，我是学习期间习惯这样哈哈！！-->
+<!--//     //   var url="http://localhost:9090/news/count";-->
+<!--//     //   this.axios.post(url,{}).then(res=>{-->
+<!--//     //     console.log(res.data);-->
+<!--//     //     var getData = [];-->
+<!--//     //     //先进行赋值-->
+<!--//     //     console.log(res.data.length)-->
+<!--//     //     //for循环赋值-->
+<!--//     //     for(let i=0; i<res.data.length; i++) {-->
+<!--//     //       var obj = new Object();-->
+<!--//     //       obj.name = res.data[i].typeName;-->
+<!--//     //       obj.value = res.data[i].num;-->
+<!--//     //       getData[i] = obj;-->
+<!--//     //     }-->
+<!--//     //     //然后再给饼状图赋值-->
+<!--//     //     this.chartPie.setOption({-->
+<!--//     //       legend: {-->
+<!--//     //         data: res.data.typeName,-->
+<!--//     //       },-->
+<!--//     //       series:[{-->
+<!--//     //         data: getData,-->
+<!--//     //       }]-->
+<!--//     //     });-->
+<!--//     //   })-->
+<!--//     // },-->
+<!--//   //   drawCharts() {-->
+<!--//   //     this.drawPieChart();-->
+<!--//   //   },-->
+<!--//   // },-->
+<!--//   // //页面一加载就调用方法-->
+<!--//   // mounted () {-->
+<!--//   //   //先调用这个方法赋值-->
+<!--//   //   // this.initData();-->
+<!--//   //   //再调用饼状图方法-->
+<!--//   //   this.drawCharts();-->
+<!--//   // }-->
+<!--//-->
+<!--// }-->
+
+<!--</script>-->
+
+<!--<style scoped>-->
+<!--.chart-container {-->
+<!--  width: 100%;-->
+<!--  float: left;-->
+<!--}-->
+<!--</style>-->
 <template>
   <div>
     <div id="main" style="width:900px ;height:300px;"></div>
@@ -153,4 +319,5 @@ export default {
 <style scoped>
 
 </style>
+
 

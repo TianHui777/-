@@ -33,25 +33,25 @@ export default {
       tableData:[
         {
           id:'1',
-          name:'输出hello world',
+          name:'第一个函数',
           startTime:'2022-12-23',
           endTime:'2022-12-28'
         },
         {
           id:'2',
-          name:'简单运算',
+          name:'在函数中修改全局变量',
           startTime:'2022-12-23',
           endTime:'2022-12-28'
         },
         {
           id:'3',
-          name:'输出HELLO World',
+          name:'练习使用参数',
           startTime:'2022-12-23',
           endTime:'2022-12-28'
         },
         {
           id:'4',
-          name:'输出Hello world',
+          name:'具有多个返回值的函数',
           startTime:'2022-12-23',
           endTime:'2022-12-28'
         }
